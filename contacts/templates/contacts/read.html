@@ -1,0 +1,19 @@
+<h1>Contacts</h1>
+
+<a href="{% url 'create' %}">
+    <button>Create</button>
+</a>
+<ul>
+    {% for contact in contacts %}
+        <li>
+            {{ contact.name }} - {{ contact.phone_number }}
+	    <a href="{% url 'delete' contact.id %}">
+                <button>Delete</button>
+            </a>
+	    <a href="{% url 'edit' contact.id %}">
+                <button>Edit</button>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
