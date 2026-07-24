@@ -1,7 +1,50 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+{% load static %}
 
-    <button type="submit">Save</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact</title>
 
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+
+<div class="form-container">
+    <h1>New Contact</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Full Name</label>
+            {{ form.name }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.phone_number.id_for_label }}">Phone</label>
+            {{ form.phone_number }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.status.id_for_label }}">Status</label>
+            {{ form.status }}
+        </div>
+
+        <div class="button-row">
+            <button type="submit" class="save-btn">Save Contact</button>
+
+            <a href="{% url 'read' %}" class="cancel-btn">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

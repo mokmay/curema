@@ -1,19 +1,89 @@
-<h1>Contacts</h1>
+{% load static %}
 
-<a href="{% url 'create' %}">
-    <button>Create</button>
-</a>
-<ul>
-    {% for contact in contacts %}
-        <li>
-            {{ contact.name }} - {{ contact.phone_number }}
-	    <a href="{% url 'delete' contact.id %}">
-                <button>Delete</button>
-            </a>
-	    <a href="{% url 'edit' contact.id %}">
-                <button>Edit</button>
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
 
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+        <h1>Contacts</h1>
+
+        <a href="{% url 'create' %}" class="create-btn">
+            + New Contact
+        </a>
+    </div>
+
+    <div class="table-card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for contact in contacts %}
+
+                <tr>
+
+                    <td>{{ contact.name }}</td>
+
+                    <td>{{ contact.phone_number }}</td>
+
+                    <td>{{ contact.email }}</td>
+
+                    <td>
+                        <span class="status">
+                            {{ contact.status }}
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'edit' contact.id %}" class="edit-btn">
+                            Edit
+                        </a>
+
+                        <a href="{% url 'delete' contact.id %}" class="delete-btn">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="5" class="empty">
+                        No contacts found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
