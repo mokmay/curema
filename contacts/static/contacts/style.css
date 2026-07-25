@@ -146,8 +146,8 @@ td{
 
 .edit-btn{
     text-decoration:none;
-    background:#2563eb;
-    color:white;
+    background:#efefef;
+    color:black;
     padding:8px 14px;
     border-radius:6px;
     margin-right:8px;
@@ -155,18 +155,18 @@ td{
 
 .delete-btn{
     text-decoration:none;
-    background:#dc2626;
-    color:white;
+    background:#efefef;
+    color:black;
     padding:8px 14px;
     border-radius:6px;
 }
 
 .edit-btn:hover{
-    background:#1d4ed8;
+    background:#BFBFBF;
 }
 
 .delete-btn:hover{
-    background:#b91c1c;
+    background:#BFBFBF;
 }
 
 .empty{
