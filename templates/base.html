@@ -1,34 +1,36 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Interview CRM{% endblock %}</title>
-
+    <title>{% block title %}CRM{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'curema/css/base.css' %}">
 </head>
 <body>
 
-<div class="layout">
+<div class="app">
 
+    <!-- Sidebar -->
     <aside class="sidebar">
-
         <h2>Interview CRM</h2>
 
-        <a href="{% url 'dashboard' %}" class="nav-link">
-            Dashboard
-        </a>
-
-        <a href="{% url 'read' %}" class="nav-link">
-             Contacts
-        </a>
-
+        <nav>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'read' %}">Contacts</a>
+        </nav>
     </aside>
 
-    <main class="main-content">
-        {% block content %}
-        {% endblock %}
+    <!-- Main Content -->
+    <main class="content">
+        <header class="topbar">
+            <h1>{% block heading %}{% endblock %}</h1>
+
+            {% block actions %}{% endblock %}
+        </header>
+
+        <section class="card">
+            {% block content %}{% endblock %}
+        </section>
     </main>
 
 </div>

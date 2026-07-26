@@ -16,7 +16,7 @@ def create(request):
     else:
         form = ContactForm()
 
-    return render(request, "contacts/create.html", {"form": form})
+    return render(request, "contacts/contact_form.html", {"form": form})
 
 def read(request):
     contacts = Contact.objects.all()
@@ -28,9 +28,13 @@ def read(request):
 def delete(request, id):
     contact = get_object_or_404(Contact, id=id)
 
-    contact.delete()
+    if request.method == "POST":
+        contact.delete()
+        return redirect("read")
 
-    return redirect("read")
+    return render(request, "contacts/delete.html", {
+        "contact": contact
+    })
 
 def edit(request, id):
     contact = get_object_or_404(Contact, id=id)
@@ -44,7 +48,12 @@ def edit(request, id):
     else:
         form = ContactForm(instance=contact)
 
-    return render(request, "contacts/edit.html", {
+    return render(request, "contacts/contact_form.html", {
         "form": form
     })
 
+def details(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    return render(request, "contacts/details.html", {
+        "contact": contact
+    })

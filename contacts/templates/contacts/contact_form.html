@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block heading %}
+    {% if form.instance.pk %}Edit Contact{% else %}New Contact{% endif %}
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn">Save</button>
+    <a href="{% url 'read' %}" class="btn btn-back">Back</a>
+</form>
+{% endblock %}
