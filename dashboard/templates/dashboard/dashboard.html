@@ -3,18 +3,50 @@
 {% block title %}
 Dashboard
 {% endblock %}
+{% block heading %}
+Dashboard
+{% endblock %}
+{% block subtitle %}
+Welcome to Curema
+{% endblock %}
 
 {% block content %}
 
-<h1>Dashboard</h1>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-</head>
-<body>
-    <h1>Hello</h1>
-</body>
-</html>
+<div class="stats-grid">
+
+    <div class="card">
+        <div class="stats-card">
+            <p class="stats-card__title">Total Contacts</p>
+            <h2 class="stats-card__value">{{ total_contacts }}</h2>
+            <p class="stats-card__subtitle">All contacts</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="stats-card">
+            <p class="stats-card__title">Contacted</p>
+            <h2 class="stats-card__value">{{ contacted }}</h2>
+            <p class="stats-card__subtitle">People contacted</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="stats-card">
+            <p class="stats-card__title">Interview Planned</p>
+            <h2 class="stats-card__value">{{ interview_planned }}</h2>
+            <p class="stats-card__subtitle">Upcoming interviews</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="stats-card">
+            <p class="stats-card__title">Interview Completed</p>
+            <h2 class="stats-card__value">{{ interview_completed }}</h2>
+            <p class="stats-card__subtitle">Completed interviews</p>
+        </div>
+    </div>
+
+</div>
+
 
 {% endblock %}

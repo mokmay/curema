@@ -7,7 +7,20 @@ class ContactForm(forms.ModelForm):
         fields = ["name", "phone_number","email","status"]
 
         widgets = {
+            "name": forms.TextInput(attrs={
+                "class": "contact-form__input",
+                "placeholder": "Enter full name",
+            }),
+            "phone_number": forms.TextInput(attrs={
+                "class": "contact-form__input",
+                "placeholder": "Enter phone number",
+            }),
+            "email": forms.EmailInput(attrs={
+                "class": "contact-form__input",
+                "placeholder": "Enter email address",
+            }),
             "status": forms.Select(attrs={
-                "class": "form-select"
+                "class": "contact-form__input",
             }),
         }
+

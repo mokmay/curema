@@ -1,15 +1,75 @@
 {% extends "base.html" %}
 
+{% block title %}
+    {% if form.instance.pk %}Edit Contact{% else %}New Contact{% endif %}
+{% endblock %}
+
 {% block heading %}
     {% if form.instance.pk %}Edit Contact{% else %}New Contact{% endif %}
 {% endblock %}
 
-{% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+{% block subtitle %}
+    {% if form.instance.pk %}
+        Update this contact's information.
+    {% else %}
+        Add a new contact to your CRM.
+    {% endif %}
+{% endblock %}
 
-    <button type="submit" class="btn">Save</button>
-    <a href="{% url 'read' %}" class="btn btn-back">Back</a>
-</form>
+{% block actions %}
+
+<a href="{% url 'read' %}" class="button button--secondary">
+    Back
+</a>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+
+        <div class="contact-form__group">
+            <label class="contact-form__label" for="{{ form.name.id_for_label }}">
+                Full Name
+            </label>
+            {{ form.name }}
+        </div>
+
+        <div class="contacst-form__group">
+            <label class="contact-form__label" for="{{ form.phone_number.id_for_label }}">
+                Phone Number
+            </label>
+            {{ form.phone_number }}
+        </div>
+
+        <div class="contact-form__group">
+            <label class="contact-form__label" for="{{ form.email.id_for_label }}">
+                Email
+            </label>
+            {{ form.email }}
+        </div>
+
+        <div class="contact-form__group">
+            <label class="contact-form__label" for="{{ form.status.id_for_label }}">
+                Status
+            </label>
+            {{ form.status }}
+        </div>
+
+        <div class="contact-form__actions">
+
+            <button type="submit" class="button button--primary">
+                Save
+            </button>
+
+            <a href="{% url 'read' %}" class="button button--secondary">
+                Cancel
+            </a>
+
+        </div>
+    </form>
+</div>
+
 {% endblock %}

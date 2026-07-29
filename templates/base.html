@@ -1,39 +1,113 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>{% block title %}CRM{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Interview CRM{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Global CSS -->
     <link rel="stylesheet" href="{% static 'curema/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/card.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/table.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/badge.css' %}">
+    <link rel="stylesheet" href="{% static 'curema/css/contacts.css' %}">
+    <link rel="stylesheet" href="{% static 'contacts/delete.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+    <!-- Page specific CSS -->
+    {% block extra_css %}
+    {% endblock %}
+
 </head>
+
 <body>
 
-<div class="app">
+<div class="layout">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
-        <h2>Interview CRM</h2>
 
-        <nav>
-            <a href="{% url 'dashboard' %}">Dashboard</a>
-            <a href="{% url 'read' %}">Contacts</a>
-        </nav>
+        <div class="sidebar__top">
+
+            <h1 class="sidebar__logo">
+                Curema
+            </h1>
+
+            <nav class="sidebar__nav">
+
+                <a href="{% url 'dashboard' %}" class="sidebar__link">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'read' %}" class="sidebar__link">
+                    Contacts
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar__footer">
+
+            <a href="#" class="sidebar__link">
+                Settings
+            </a>
+
+        </div>
+
     </aside>
 
-    <!-- Main Content -->
-    <main class="content">
-        <header class="topbar">
-            <h1>{% block heading %}{% endblock %}</h1>
+    <main class="page">
 
-            {% block actions %}{% endblock %}
+        <header class="page__header">
+
+            <div>
+
+                <h1 class="page__title">
+                    {% block heading %}
+                    {% endblock %}
+                </h1>
+
+                <p class="page__subtitle">
+                    {% block subtitle %}
+                    {% endblock %}
+                </p>
+
+            </div>
+
+            <div class="page__actions">
+
+                {% block actions %}
+                {% endblock %}
+
+            </div>
+
         </header>
 
-        <section class="card">
-            {% block content %}{% endblock %}
+        <section class="page__content">
+
+            {% block content %}
+            {% endblock %}
+
         </section>
+
     </main>
 
 </div>
 
 </body>
+
 </html>

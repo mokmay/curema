@@ -1,0 +1,22 @@
+.badge{
+    display:inline-block;
+    padding:.35rem .8rem;
+    border-radius:999px;
+    font-size:.85rem;
+}
+
+.badge--not-contacted{
+    background:#f3f4f6;
+}
+
+.badge--contacted{
+    background:#dbeafe;
+}
+
+.badge--responded{
+    background:#dcfce7;
+}
+
+.badge--done{
+    background:#ede9fe;
+}

@@ -1,0 +1,51 @@
+/* ========================================
+   Delete Card
+======================================== */
+
+.delete-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.delete-card__warning {
+    margin: 0;
+    padding: 1rem;
+    background: #f3f4f7;
+    border: 1px solid #111827;
+    border-radius: 0.75rem;
+    color: #111827;
+    font-weight: 600;
+}
+
+.delete-card__details {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.delete-card__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.delete-card__row:last-child {
+    border-bottom: none;
+}
+
+.delete-card__label {
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.delete-card__value {
+    color: #111827;
+}
+
+.delete-card__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}

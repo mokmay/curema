@@ -1,0 +1,39 @@
+.sidebar{
+    width:260px;
+    background:white;
+    border-right:1px solid #e5e7eb;
+    padding:2rem;
+    display:flex;
+    flex-direction:column;
+}
+
+.sidebar__logo{
+    font-size:1.8rem;
+    font-weight:700;
+    margin-bottom:3rem;
+}
+
+.sidebar__nav{
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+}
+
+.sidebar__link{
+    padding:.9rem 1rem;
+    border-radius:10px;
+    color:#4b5563;
+}
+
+.sidebar__link:hover{
+    background:#f3f4f6;
+}
+
+.sidebar__link--active{
+    background:#111827;
+    color:white;
+}
+
+.sidebar__footer{
+    margin-top:auto;
+}

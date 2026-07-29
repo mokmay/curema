@@ -1,0 +1,101 @@
+.contacts{
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+
+
+.contacts__delete{
+    max-width:700px;
+}
+
+.contacts__details{
+    margin:2rem 0;
+}
+
+.contacts__detail{
+    display:flex;
+    justify-content:space-between;
+    padding:1rem 0;
+    border-bottom:1px solid #e5e7eb;
+}
+
+/* ===========================
+   CONTACTS TABLE
+=========================== */
+
+.contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.contacts-table thead tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.contacts-table th {
+    text-align: left;
+    padding: 22px 40px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-bottom:none;
+}
+
+.contacts-table td {
+    padding: 22px 40px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.contacts-table th:nth-child(1),
+.contacts-table td:nth-child(1) {
+    width: 15%;
+}
+
+.contacts-table th:nth-child(2),
+.contacts-table td:nth-child(2) {
+    width: 15%;
+}
+
+.contacts-table th:nth-child(3),
+.contacts-table td:nth-child(3) {
+    width: 15%;
+}
+
+.contacts-table th:nth-child(4),
+.contacts-table td:nth-child(4) {
+    width: 25%;
+}
+
+.contacts-table__row {
+    cursor: pointer;
+}
+
+.contacts-table__row td {
+    transition: background-color 0.2s ease;
+}
+
+.contacts-table__row:hover td {
+    background-color: #f8fafc;
+}
+
+.contacts-table__empty {
+    text-align: center;
+    color: #64748b;
+    padding: 40px;
+}
+
+.contacts-table th:last-child,
+.contacts-table td:last-child {
+    width: 220px;
+    text-align: right;
+}
+
+.contacts-table__actions {
+    white-space: nowrap;
+}
+
+.contacts-table__actions .button {
+    margin-left: .5rem;
+}

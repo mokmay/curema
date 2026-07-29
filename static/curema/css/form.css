@@ -1,0 +1,79 @@
+/* ========================================
+   Contact Form
+======================================== */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* Field Group */
+
+.contact-form__group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+
+.contact-form__label {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Inputs */
+
+.contact-form__input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    color: #111827;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form__input::placeholder {
+    color: #9ca3af;
+}
+
+.contact-form__input:focus {
+    outline: none;
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+}
+
+/* Select */
+
+.contact-form select.contact-form__input {
+    cursor: pointer;
+}
+
+/* Buttons */
+
+.contact-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Small screens */
+
+@media (max-width: 768px) {
+
+    .contact-form__actions {
+        flex-direction: column-reverse;
+    }
+
+    .contact-form__actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

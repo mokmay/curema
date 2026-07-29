@@ -1,13 +1,77 @@
 {% extends "base.html" %}
 
-{% block heading %}Delete Contact{% endblock %}
+{% block title %}Delete Contact{% endblock %}
+
+{% block heading %}
+Delete Contact
+{% endblock %}
+
+{% block subtitle %}
+This action cannot be undone.
+{% endblock %}
+
+{% block actions %}
+
+<a href="{% url 'read' %}" class="button button--secondary">
+    Back
+</a>
+
+{% endblock %}
 
 {% block content %}
-<p>Are you sure you want to delete "{{ object }}"?</p>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn">Confirm</button>
-    <a href="{% url 'read' %}" class="btn btn-back">Back</a>
-</form>
+<div class="card">
+
+    <div class="delete-card">
+
+        <p class="delete-card__warning">
+            Are you sure you want to delete this contact?
+        </p>
+
+        <div class="delete-card__details">
+
+            <div class="delete-card__row">
+                <span class="delete-card__label">Name</span>
+                <span class="delete-card__value">{{ contact.name }}</span>
+            </div>
+
+            <div class="delete-card__row">
+                <span class="delete-card__label">Phone</span>
+                <span class="delete-card__value">{{ contact.phone_number }}</span>
+            </div>
+
+            <div class="delete-card__row">
+                <span class="delete-card__label">Email</span>
+                <span class="delete-card__value">{{ contact.email }}</span>
+            </div>
+
+            <div class="delete-card__row">
+                <span class="delete-card__label">Status</span>
+                <span class="delete-card__value">{{ contact.status }}</span>
+            </div>
+
+        </div>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="delete-card__actions">
+
+                <a href="{% url 'read' %}" class="button button--secondary">
+                    Cancel
+                </a>
+
+                <button type="submit" class="button button--danger">
+                    Delete
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
 {% endblock %}

@@ -1,24 +1,73 @@
-{% extends "base.html" %}
+i{% extends "base.html" %}
 
-{% block heading %}{{ contact.name }}{% endblock %}
+{% block title %}{{ contact.name }}{% endblock %}
+
+{% block heading %}
+{{ contact.name }}
+{% endblock %}
+
+{% block subtitle %}
+View contact details.
+{% endblock %}
+
+{% block actions %}
+
+<a href="{% url 'read' %}" class="button button--secondary">
+    ← Back
+</a>
+
+{% endblock %}
 
 {% block content %}
 
-<a href="{% url 'read' %}" class="btn btn-back">← Back</a>
+<div class="card">
 
-<div style="margin-top: 15px;">
+    <div class="contact-details">
 
-    <p><strong>Name:</strong> {{ contact.name }}</p>
-    <p><strong>Email:</strong> {{ contact.email }}</p>
-    <p><strong>Phone:</strong> {{ contact.phone }}</p>
-    <p><strong>Organisation:</strong> {{ contact.organisation }}</p>
-    <p><strong>Status:</strong> {{ contact.status }}</p>
+        <div class="contact-details__row">
+            <span class="contact-details__label">Name</span>
+            <span class="contact-details__value">{{ contact.name }}</span>
+        </div>
 
-</div>
+        <div class="contact-details__row">
+            <span class="contact-details__label">Email</span>
+            <span class="contact-details__value">{{ contact.email }}</span>
+        </div>
 
-<div class="actions" style="margin-top: 20px;">
-    <a href="{% url 'edit' contact.id %}" class="btn">Edit</a>
-    <a href="{% url 'delete' contact.id %}" class="btn btn-danger">Delete</a>
+        <div class="contact-details__row">
+            <span class="contact-details__label">Phone</span>
+            <span class="contact-details__value">{{ contact.phone }}</span>
+        </div>
+
+        <div class="contact-details__row">
+            <span class="contact-details__label">Organisation</span>
+            <span class="contact-details__value">{{ contact.organisation }}</span>
+        </div>
+
+        <div class="contact-details__row">
+            <span class="contact-details__label">Status</span>
+
+            <span class="badge badge--{{ contact.status|slugify }}">
+                {{ contact.get_status_display }}
+            </span>
+        </div>
+
+    </div>
+
+    <div class="contact-details__actions">
+
+        <a href="{% url 'edit' contact.id %}"
+           class="button button--primary">
+            Edit
+        </a>
+
+        <a href="{% url 'delete' contact.id %}"
+           class="button button--danger">
+            Delete
+        </a>
+
+    </div>
+
 </div>
 
 {% endblock %}

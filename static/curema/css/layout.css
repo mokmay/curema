@@ -1,0 +1,25 @@
+.layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.page{
+    flex:1;
+    padding:3rem;
+}
+
+.page__header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:2rem;
+}
+
+.page__title{
+    font-size:2rem;
+    font-weight:700;
+}
+
+.page__subtitle{
+    color:#6b7280;
+}

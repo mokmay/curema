@@ -1,33 +1,84 @@
 {% extends "base.html" %}
 
 {% block title %}Contacts{% endblock %}
-{% block heading %}Contacts{% endblock %}
+
+{% block heading %}
+Contacts
+{% endblock %}
+
+{% block subtitle %}
+Manage your nursery contacts.
+{% endblock %}
 
 {% block actions %}
-<a href="{% url 'create' %}" class="btn">+ New Contact</a>
+<a href="{% url 'create' %}" class="button button--primary">
+    + New Contact
+</a>
 {% endblock %}
 
 {% block content %}
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th></th>
-    </tr>
 
-    {% for contact in contacts %}
-        <tr onclick="window.location='{% url 'details' contact.id %}'" class="row-link">
+<div class="card">
 
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.email }}</td>
+    <table class="contacts-table">
 
-            <!-- IMPORTANT: stop row click when clicking buttons -->
-        <td onclick="event.stopPropagation();">
-            <a href="{% url 'edit' contact.id %}" class="btn btn-sm">Edit</a>
-            <a href="{% url 'delete' contact.id %}" class="btn btn-sm btn-danger">Delete</a>
-        </td>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+            </tr>
+        </thead>
 
-    </tr>
-    {% endfor %}
-</table>
+        <tbody>
+
+        {% for contact in contacts %}
+
+            <tr class="contacts-table__row"
+                onclick="window.location='{% url 'details' contact.id %}'">
+
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+
+                <td>
+                    <span class="badge">
+                        {{ contact.get_status_display }}
+                    </span>
+                </td>
+
+                <td class="contacts-table__actions"
+                    onclick="event.stopPropagation();">
+
+                    <a href="{% url 'edit' contact.id %}"
+                       class="button button--secondary">
+                       Edit
+                    </a>
+
+                    <a href="{% url 'delete' contact.id %}"
+                       class="button button--danger">
+                       Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+                <td colspan="4" class="contacts-table__empty">
+                    No contacts yet.
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
 {% endblock %}
