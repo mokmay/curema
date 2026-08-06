@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',    
     'dashboard.apps.DashboardConfig',
     'contacts.apps.ContactsConfig',
     'django.contrib.admin',
@@ -120,3 +121,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "login"

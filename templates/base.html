@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,6 +27,7 @@
     <link rel="stylesheet" href="{% static 'curema/css/contacts.css' %}">
     <link rel="stylesheet" href="{% static 'contacts/delete.css' %}">
     <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/auth.css' %}">
     <!-- Page specific CSS -->
     {% block extra_css %}
     {% endblock %}
@@ -37,39 +37,45 @@
 <body>
 
 <div class="layout">
+    {% if user.is_authenticated %}
+        <aside class="sidebar">
 
-    <aside class="sidebar">
+            <div class="sidebar__top">
 
-        <div class="sidebar__top">
+                <h1 class="sidebar__logo">
+                    Curema
+                </h1>
 
-            <h1 class="sidebar__logo">
-                Curema
-            </h1>
+                <nav class="sidebar__nav">
 
-            <nav class="sidebar__nav">
+                    <a href="{% url 'dashboard' %}" class="sidebar__link">
+                        Dashboard
+                    </a>
 
-                <a href="{% url 'dashboard' %}" class="sidebar__link">
-                    Dashboard
+                    <a href="{% url 'read' %}" class="sidebar__link">
+                        Private Contacts
+                    </a>
+
+                    <form method="POST" action="{% url 'logout' %}" class="sidebar__logout">
+                        {% csrf_token %}
+                        <button type="submit" class="sidebar__link sidebar__link--button">
+                            Logout
+                        </button>
+                    </form>
+                </nav>
+
+            </div>
+
+            <div class="sidebar__footer">
+
+                <a href="#" class="sidebar__link">
+                    Settings
                 </a>
 
-                <a href="{% url 'read' %}" class="sidebar__link">
-                    Contacts
-                </a>
+            </div>
 
-            </nav>
-
-        </div>
-
-        <div class="sidebar__footer">
-
-            <a href="#" class="sidebar__link">
-                Settings
-            </a>
-
-        </div>
-
-    </aside>
-
+        </aside>
+    {% endif %}
     <main class="page">
 
         <header class="page__header">

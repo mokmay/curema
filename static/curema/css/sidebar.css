@@ -37,3 +37,12 @@
 .sidebar__footer{
     margin-top:auto;
 }
+
+.sidebar__link--button {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}

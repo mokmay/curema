@@ -23,3 +23,8 @@
 .page__subtitle{
     color:#6b7280;
 }
+
+.layout--center{
+    justify-content:center;
+    align-items:center;
+}
